@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* =========================================================================
+   1. ORTAK DEĞİŞKENLER & DARK MODE (VARSAYILAN TEMA)
+   ========================================================================= */
+
+:root {
+    /* ------------------------------
+       A. RENK - KOYU TEMA DEĞERLERİ (Default)
+       ------------------------------ */
+    --color-bg-default: #10151f;          /* Ana arka plan: Çok koyu */
+    --color-bg-surface: #1f2937;          /* Kartlar/Yüzeyler: Orta koyu */
+    --color-border-subtle: #374151;       /* Sınırlar: Koyu gri */
+    
+    /* Yeni Kenarlık Değişkeni */
+    --color-border-default: #4b5563;      /* Varsayılan Kenarlık: Daha belirgin koyu gri */
+
+    --color-text-default: #f9fafb;        /* Ana metin: Beyaz */
+    --color-text-secondary: #9ca3af;      /* İkincil metin: Açık gri */
+
+    /* ------------------------------
+       B. MARKA VE ODAK (FOCUS) RENKLERİ
+       ------------------------------ */
+    --color-brand-primary: #7c3aed;       /* Mor */
+    --color-brand-secondary: #fa5560;     /* Kırmızı/Pembe */
+    --color-text-link: var(--color-brand-primary);
+    
+    /* Odaklanma (Focus Ring) için Eklendi */
+    --color-focus-ring: #3b82f6;          /* Mavi gibi belirgin bir renk */
+    --outline-ring: 0 0 0 4px var(--color-focus-ring);
+    
+    /* ------------------------------
+       C. TİPOGRAFİ, SPACING, UTILITIES (Ortak)
+       ------------------------------ */
+    --font-family-sans: "Plus Jakarta Sans", sans-serif;
+
+    /* Başlık Boyutları ve Ağırlıklar Eklendi */
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.875rem;             /* H2/H3 için */
+    --font-size-2xl: 2.25rem;             /* H1 için */
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+
+    --border-radius-base: 8px;
+    --transition-duration: 0.2s;
+    --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================================
+   2. LIGHT MODE OVERRIDES
+   ========================================================================= */
+
+[data-theme='light'] {
+    /* ARKA PLAN VE YÜZEYLER (AÇIK VERSİYONLARI) */
+    --color-bg-default: #ffffff;          /* Ana arka planı beyaza çevir */
+    --color-bg-surface: #f4f4f5;          /* Kart yüzeyini açık griye çevir */
+    --color-border-subtle: #e5e7eb;       /* Sınırları açık griye çevir */
+
+    /* Yeni Kenarlık Değişkeni (AÇIK MOD) */
+    --color-border-default: #d1d5db;      /* Varsayılan Kenarlığı daha açık gri yapar */
+
+    /* METİN RENKLERİ (KOYU VERSİYONLARI) */
+    --color-text-default: #1f2937;        /* Ana metni koyu griye çevir */
+    --color-text-secondary: #6b7280;      /* İkincil metni orta griye çevir */
+
+    /* AÇIK TEMADA DAHA HAFİF GÖLGE */
+    --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================================
+   3. TEMEL STİLLER (Önerilen Erişilebilirlik Eklentileri)
+   ========================================================================= */
+
+body{
+    background-color: var(--color-bg-default);
+    color: var(--color-text-default);
+    font-family: var(--font-family-sans);
+}
+
+/* Klavyeyle odaklanılan tüm elemanlar için erişilebilirlik halkası */
+:focus-visible {
+    outline: var(--outline-ring);
+    outline-offset: 2px;
+}
