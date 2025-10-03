@@ -1,68 +1,55 @@
 import loginPageImg from '../../assets/images/login-page.png';
 import logo from '../../assets/logo.png';
 import styles from './Login.module.css';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik'; 
 import { RiLoginCircleLine } from 'react-icons/ri';
 import { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import googleIcon from '../../assets/google.png';
 import FacebookLogin from '@greatsumini/react-facebook-login';
+import { ImFacebook2 } from 'react-icons/im';
 import { NavLink } from 'react-router-dom';
+import LoginSchema from '../../validation/LoginSchema';
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
+// ---------------------------CONSTANTS --------------------------
+const RECAPTCHA_ID = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+const FB_APP_ID = import.meta.env.VITE_FACEBOOK_APP_ID;
 
-
-export default function Login() {
-  // STATES
+function LoginForm() {
+  // --------------------------------STATES--------------------------
   const [animate, setAnimate] = useState(false);
+  const [error, setLoginError] = useState(""); 
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
+  const RECAPTCHA_ACTION = "login";
 
-  // FACEBOOK LOGIN HANDLER
-  const FB_APP_ID = import.meta.env.VITE_FACEBOOK_APP_ID;
+  //!-----------------------SOCİAL MEDİA LOGİN HANDLER---------------------
 
+  //FACEBOOK LOGİN HANDLER
   const responseFacebook = (response) => {
     if (response.status !== 'unknown') {
-      const userWithProvider = {
-        ...response,
-        provider: 'facebook',
-      };
-      console.log('Facebook user info:', userWithProvider);
+      console.log('Facebook user info:', { ...response, provider: 'facebook' });
     } else {
       console.error('Facebook login failed');
     }
   };
 
-  // GOOGLE LOGIN HANDLER
+  //GOOGLE LOGİN HANDLER
   const loginWithGoogle = useGoogleLogin({
     onSuccess: async (tokenRes) => {
       try {
         const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-          headers: {
-            Authorization: `Bearer ${tokenRes.access_token}`,
-          },
+          headers: { Authorization: `Bearer ${tokenRes.access_token}` },
         });
         const userInfo = await res.json();
-
-        const userWithProvider = {
-          ...userInfo,
-          provider: 'google',
-        };
-
-        console.log('Google user info:', userWithProvider);
-      } catch (error) {
-        console.error('Error fetching Google user info:', error);
+        console.log('Google user info:', { ...userInfo, provider: 'google' });
+      } catch (err) {
+        console.error('Error fetching Google user info:', err);
       }
     },
-    onError: () => {
-      console.error('Google login failed');
-    },
+    onError: () => console.error('Google login failed'),
   });
-
-  // LOGIN BUTTON ANIMATION
-  const handleLoginAnimation = (e) => {
-    e.preventDefault();
-    setAnimate(true);
-    setTimeout(() => setAnimate(false), 1200);
-  };
 
   return (
     <div className={styles.loginContainer}>
@@ -81,8 +68,34 @@ export default function Login() {
 
           <Formik
             initialValues={{ email: '', password: '' }}
-            onSubmit={(values) => {
-              console.log(values);
+            validationSchema={LoginSchema}
+            onSubmit={async (values, actions) => {
+              if (!executeRecaptcha) {
+                setLoginError("Captcha is not ready. Please try again.");
+                actions.setSubmitting(false);
+                return;
+              }
+
+              try {
+                const token = await executeRecaptcha(RECAPTCHA_ACTION);
+                if (!token) {
+                  setLoginError("Captcha verification failed.");
+                  actions.setSubmitting(false);
+                  return;
+                }
+
+                console.log("reCAPTCHA v3 token:", token);
+
+                setAnimate(true);
+                setTimeout(() => setAnimate(false), 1200);
+                actions.resetForm();
+                setLoginError("");
+              } catch (err) {
+                console.error(err);
+                setLoginError("Captcha error. Please try again.");
+              } finally {
+                actions.setSubmitting(false);
+              }
             }}
           >
             {() => (
@@ -93,18 +106,24 @@ export default function Login() {
                   className={styles.inputField}
                   placeholder="name@example.com"
                 />
+                <ErrorMessage name="email">
+                  {(msg) => <div className={styles.errorBox}>{msg}</div>}
+                </ErrorMessage>
+
                 <Field
                   name="password"
                   type="password"
                   className={styles.inputField}
                   placeholder="••••••••"
                 />
-                <button
-                  type="submit"
-                  className={styles.submitButton}
-                  onClick={handleLoginAnimation}
-                >
-                  Log In{' '}
+                <ErrorMessage name="password">
+                  {(msg) => <div className={styles.errorBox}>{msg}</div>}
+                </ErrorMessage>
+
+                {error && <div className={styles.errorBox}>{error}</div>}
+
+                <button type="submit" className={styles.submitButton}>
+                  Log In
                   <RiLoginCircleLine
                     className={`${styles.icon} ${animate ? styles.animate : ''}`}
                   />
@@ -116,7 +135,11 @@ export default function Login() {
           <div className={styles.orLoginContainer}>
             <p className={styles.orLoginWith}>Or Log In with</p>
 
-            <button onClick={() => loginWithGoogle()} className={styles.googleButton}>
+            <button
+              type="button"
+              onClick={() => loginWithGoogle()}
+              className={styles.googleButton}
+            >
               <img src={googleIcon} alt="Google" className={styles.googleIcon} />
               Continue with Google
             </button>
@@ -126,27 +149,56 @@ export default function Login() {
               autoLoad={false}
               fields="name,email,picture"
               callback={responseFacebook}
-              icon="fa-facebook"
-              textButton="Continue with Facebook"
-              className={styles.facebookButton}
+              render={(renderProps) => (
+                <button
+                  type="button"
+                  onClick={renderProps.onClick}
+                  className={styles.facebookButton}
+                >
+                  <ImFacebook2 className={styles.facebookIcon} />
+                  Continue with Facebook
+                </button>
+              )}
             />
-            <div>
-                <p>
-                  By logging in, you agree to our{" "}
-                  <NavLink to="/privacy-policy" className={styles.privacyLink}>
-                    Privacy Policy
-                  </NavLink>
-                  .
-                </p>
+
+            <div className={styles.privacyContainer}>
+              <p>
+                By logging in, you agree to our{' '}
+                <NavLink to="/privacy-policy" className={styles.privacyLink}>
+                  Privacy Policy
+                </NavLink>
+                .
+              </p>
             </div>
-            
+
+            {/* 🔹 SIGNUP LINK */}
+            <div className={styles.signupContainer}>
+              <p>
+                Don’t have an account?{' '}
+                <NavLink to="/signup" className={styles.privacyLink}>
+                  Sign up
+                </NavLink>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-        
+
       <div>
         <img src={loginPageImg} alt="login-page" className={styles.loginImage} />
       </div>
     </div>
+  );
+}
+
+// 🔹 PROVİDER RUN JUST ON LOGİN PAGE
+export default function LoginPage() {
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={RECAPTCHA_ID}
+      scriptProps={{ async: true, defer: true }}
+    >
+      <LoginForm />
+    </GoogleReCaptchaProvider>
   );
 }
