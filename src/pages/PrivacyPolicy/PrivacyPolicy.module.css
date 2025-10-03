@@ -1,0 +1,161 @@
+/* PrivacyPolicy.module.css - Geliştirilmiş Versiyon */
+
+/* =========================================================================
+   1. GENEL KAPSAYICI (Container)
+   ========================================================================= */
+
+.privacyContainer {
+    /* Temel Stil Ayarları */
+    background-color: var(--color-bg-default);
+    color: var(--color-text-default);
+    font-family: var(--font-family-sans);
+    line-height: 1.75; /* Daha rahat okuma için satır aralığı */
+    padding: calc(3 * var(--spacing-lg)) var(--spacing-md);
+    margin: 0 auto;
+    max-width: 960px; /* Daha geniş bir okuma alanı */
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* =========================================================================
+   2. BAŞLIK (Header)
+   ========================================================================= */
+
+.header {
+    text-align: center;
+    margin-bottom: calc(2 * var(--spacing-lg));
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-primary); /* Marka Rengiyle Vurgu */
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em; /* Hafif sıkıştırma, modern görünüm */
+}
+
+.effectiveDate {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary); /* İkincil Renk */
+    font-weight: var(--font-weight-medium);
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================================================
+   3. BÖLÜMLER (Section) ve İÇERİK
+   ========================================================================= */
+
+.section {
+    background-color: var(--color-bg-surface); /* Kart yüzey rengi */
+    padding: var(--spacing-lg);
+    margin-bottom: calc(2 * var(--spacing-lg));
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-base); /* Gölge efekti, derinlik verir */
+    
+    /* Vurgulu Sol Kenarlık (Marka Rengiyle) */
+    border-left: 5px solid var(--color-brand-secondary); 
+}
+
+.section h2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border-default);
+}
+
+.section p {
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-default);
+}
+
+/* =========================================================================
+   4. LİSTELER (Ul) ve VURGULAR
+   ========================================================================= */
+
+.section ul {
+    list-style: none; /* Varsayılan madde işaretlerini kaldır */
+    padding-left: 0;
+    margin: var(--spacing-lg) 0;
+}
+
+.section li {
+    position: relative;
+    margin-bottom: var(--spacing-md);
+    padding-left: 2rem; /* Özel işaret için boşluk */
+    color: var(--color-text-secondary);
+}
+
+/* Marka rengiyle özel ve modern madde işareti */
+.section li::before {
+    content: '⦿'; /* Dolu Daire veya '★' '•' gibi bir karakter */
+    color: var(--color-brand-primary); 
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Listelerdeki başlıkları (strong) vurgulama */
+.section li strong {
+    color: var(--color-text-default);
+    font-weight: var(--font-weight-bold);
+}
+
+/* =========================================================================
+   5. BAĞLANTILAR (Links)
+   ========================================================================= */
+
+.section a {
+    color: var(--color-text-link); /* Mor renk */
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-duration), text-decoration var(--transition-duration);
+}
+
+.section a:hover {
+    color: var(--color-brand-secondary); /* Hover'da kırmızı/pembe vurgu */
+    text-decoration: underline;
+}
+
+/* =========================================================================
+   6. İLETİŞİM BÖLÜMÜ (Contact Us) ÖZEL STİL
+   ========================================================================= */
+
+.section:last-child p:last-of-type {
+    /* Adres ve e-posta bilgisini kapsayan blok */
+    background-color: var(--color-bg-default);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--color-border-default);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+}
+
+/* =========================================================================
+   7. DUYARLILIK (Responsive Design)
+   ========================================================================= */
+
+@media (max-width: 768px) {
+    .privacyContainer {
+        padding: calc(2 * var(--spacing-lg)) var(--spacing-lg);
+    }
+    
+    .header h1 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .section h2 {
+        font-size: var(--font-size-lg);
+    }
+    
+    .section {
+        margin-bottom: var(--spacing-lg);
+        padding: var(--spacing-md);
+    }
+}
