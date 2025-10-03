@@ -9,11 +9,12 @@ import { BrowserRouter } from 'react-router-dom'
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <GoogleOAuthProvider clientId={googleClientId}>
-        <App />
+          <App />
       </GoogleOAuthProvider>
     </BrowserRouter>
   </StrictMode>,
