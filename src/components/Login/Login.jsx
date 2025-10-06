@@ -4,55 +4,32 @@ import styles from './Login.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik'; 
 import { RiLoginCircleLine } from 'react-icons/ri';
 import { useState } from 'react';
-import { useGoogleLogin } from '@react-oauth/google';
 import googleIcon from '../../assets/google.png';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { ImFacebook2 } from 'react-icons/im';
+import { useGoogleLoginHandler, useFacebookLoginProps, useRecaptchaHelper, defaultSocialLoginSuccess, defaultSocialLoginError } from '../../utils/socialMediaHelper';
 import { NavLink } from 'react-router-dom';
 import LoginSchema from '../../validation/LoginSchema';
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 // ---------------------------CONSTANTS --------------------------
 const RECAPTCHA_ID = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-const FB_APP_ID = import.meta.env.VITE_FACEBOOK_APP_ID;
 
 function LoginForm() {
   // --------------------------------STATES--------------------------
   const [animate, setAnimate] = useState(false);
   const [error, setLoginError] = useState(""); 
-  const { executeRecaptcha } = useGoogleReCaptcha();
-
-  const RECAPTCHA_ACTION = "login";
 
   //!-----------------------SOCİAL MEDİA LOGİN HANDLER---------------------
 
-  //FACEBOOK LOGİN HANDLER
-  const responseFacebook = (response) => {
-    if (response.status !== 'unknown') {
-      console.log('Facebook user info:', { ...response, provider: 'facebook' });
-    } else {
-      console.error('Facebook login failed');
-    }
-  };
-
-  //GOOGLE LOGİN HANDLER
-  const loginWithGoogle = useGoogleLogin({
-    onSuccess: async (tokenRes) => {
-      try {
-        const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-          headers: { Authorization: `Bearer ${tokenRes.access_token}` },
-        });
-        const userInfo = await res.json();
-        console.log('Google user info:', { ...userInfo, provider: 'google' });
-      } catch (err) {
-        console.error('Error fetching Google user info:', err);
-      }
-    },
-    onError: () => console.error('Google login failed'),
-  });
+  //SOCIAL MEDIA LOGIN HANDLERS
+  const loginWithGoogle = useGoogleLoginHandler(defaultSocialLoginSuccess, defaultSocialLoginError);
+  
+  //RECAPTCHA HANDLER
+  const { executeRecaptchaVerification } = useRecaptchaHelper("login");
 
   return (
-    <div className={styles.loginContainer}>
+    <section className={styles.loginContainer}>
       <div className={styles.loginFormContainer}>
         <div className={styles.logoContainer}>
           <img src={logo} alt="logo" className={styles.logo} />
@@ -70,32 +47,21 @@ function LoginForm() {
             initialValues={{ email: '', password: '' }}
             validationSchema={LoginSchema}
             onSubmit={async (values, actions) => {
-              if (!executeRecaptcha) {
-                setLoginError("Captcha is not ready. Please try again.");
-                actions.setSubmitting(false);
-                return;
-              }
-
-              try {
-                const token = await executeRecaptcha(RECAPTCHA_ACTION);
-                if (!token) {
-                  setLoginError("Captcha verification failed.");
-                  actions.setSubmitting(false);
-                  return;
+              await executeRecaptchaVerification(
+                (token) => {
+                  // Success handler
+                  console.log("reCAPTCHA v3 token:", token);
+                  setAnimate(true);
+                  setTimeout(() => setAnimate(false), 1200);
+                  actions.resetForm();
+                  setLoginError("");
+                },
+                (error) => {
+                  // Error handler
+                  setLoginError(error);
                 }
-
-                console.log("reCAPTCHA v3 token:", token);
-
-                setAnimate(true);
-                setTimeout(() => setAnimate(false), 1200);
-                actions.resetForm();
-                setLoginError("");
-              } catch (err) {
-                console.error(err);
-                setLoginError("Captcha error. Please try again.");
-              } finally {
-                actions.setSubmitting(false);
-              }
+              );
+              actions.setSubmitting(false);
             }}
           >
             {() => (
@@ -145,19 +111,19 @@ function LoginForm() {
             </button>
 
             <FacebookLogin
-              appId={FB_APP_ID}
-              autoLoad={false}
-              fields="name,email,picture"
-              callback={responseFacebook}
-              render={(renderProps) => (
-                <button
-                  type="button"
-                  onClick={renderProps.onClick}
-                  className={styles.facebookButton}
-                >
-                  <ImFacebook2 className={styles.facebookIcon} />
-                  Continue with Facebook
-                </button>
+              {...useFacebookLoginProps(
+                defaultSocialLoginSuccess,
+                defaultSocialLoginError,
+                (renderProps) => (
+                  <button
+                    type="button"
+                    onClick={renderProps.onClick}
+                    className={styles.facebookButton}
+                  >
+                    <ImFacebook2 className={styles.facebookIcon} />
+                    Continue with Facebook
+                  </button>
+                )
               )}
             />
 
@@ -184,10 +150,10 @@ function LoginForm() {
         </div>
       </div>
 
-      <div>
+      <div className={styles.imgSection}>
         <img src={loginPageImg} alt="login-page" className={styles.loginImage} />
       </div>
-    </div>
+    </section>
   );
 }
 

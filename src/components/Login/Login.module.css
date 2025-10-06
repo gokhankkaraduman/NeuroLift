@@ -7,6 +7,7 @@
 
 .loginFormContainer {
     display: flex;
+    flex:0.6;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -15,6 +16,9 @@
     gap: var(--spacing-lg);
     overflow-y: auto; /* Allow internal scrolling if content is too tall */
     box-sizing: border-box; /* Ensure padding is included in width/height */
+}
+.imgSection{
+    flex:1.4;
 }
 
 .logoContainer {
@@ -187,7 +191,7 @@
     object-fit: cover;
 }
 
-.privacyLinkContainer {
+.privacyContainer {
     margin-top: 16px;
     text-align: center;
     font-size: 0.85rem;
@@ -198,8 +202,8 @@
     color: var(--color-brand-primary);
     text-decoration: underline;
     cursor: pointer;
+    transition: color var(--transition-duration) ease-in-out;
 }
-
 
 .privacyLink:hover {
     color: var(--color-brand-dark);
