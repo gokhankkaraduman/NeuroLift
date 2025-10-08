@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from "framer-motion"; 
+import { useNavigate } from "react-router-dom";
 import StepOne from "./Steps/StepOne/StepOne";
 import StepTwo from "./Steps/StepTwo/StepTwo";
 import StepThree from "./Steps/StepThree/StepThree";
@@ -13,11 +15,18 @@ import sideImg3 from "../../assets/images/complete-profile-stepthree.jpg";
 export default function CompleteProfile() {
   const [steps, setStep] = useState(1);
   const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 3));
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
+  
+  const onComplete = () => {
+    // Framer Motion ile home sayfasına git
+    setTimeout(() => {
+      navigate('/');
+    }, 1000);
+  };
 
-  // ✅ FormData'yı güncellerken mevcut veriyi koru
   const updateFormData = (newData) => {
     setFormData((prev) => ({
       ...prev,
@@ -25,7 +34,6 @@ export default function CompleteProfile() {
     }));
   };
 
-  // ✅ Step'e göre side image'ı döndür
   const getCurrentSideImage = () => {
     switch (steps) {
       case 1:
@@ -51,13 +59,12 @@ useEffect(() => {
       case 2:
         return <StepTwo nextStep={nextStep} prevStep={prevStep} formData={formData} updateFormData={updateFormData} />;
       case 3:
-        return <StepThree prevStep={prevStep} formData={formData} updateFormData={updateFormData} />;
+        return <StepThree prevStep={prevStep} formData={formData} updateFormData={updateFormData} onComplete={onComplete} />;
       default:
         return null;
     }
   };
 
-  // ✅ Animation variants
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     in: { opacity: 1, y: 0 },
@@ -86,13 +93,13 @@ useEffect(() => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.leftPane}>
+      <div className={`${styles.leftPane} ${steps === 2 ? styles.leftPaneSmall : ''}`}>
         <AnimatePresence mode="wait">
           <motion.img
             key={steps}
             src={getCurrentSideImage()}
             alt={`Profile step ${steps}`}
-            className={styles.sideImage}
+            className={`${styles.sideImage} ${steps === 2 ? styles.sideImageSmall : ''}`}
             variants={imageVariants}
             initial="initial"
             animate="in"
