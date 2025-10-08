@@ -17,8 +17,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-width: 300px;
+    max-width: 500px;
     gap: var(--spacing-md);
     align-items: center; /* Tüm öğeleri merkezde hizalar */
+    box-sizing: border-box;
 }
 
 /* Form alanı grubu (label + input + error) */
@@ -40,8 +43,10 @@
 
 /* Input ve Select alanları için stil */
 .inputField {
-    width: 100%; 
-    height: 44px;
+    width: 100% !important; 
+    min-width: 300px;
+    height: 44px !important;
+    min-height: 44px;
     padding: 0 var(--spacing-lg);
     font-size: var(--font-size-base);
     border: 1px solid var(--color-border-subtle);
@@ -50,6 +55,7 @@
     color: var(--color-text-default);
     transition: all var(--transition-duration) ease-in-out;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .inputField:focus {
