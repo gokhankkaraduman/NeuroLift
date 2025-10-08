@@ -4,12 +4,14 @@ import LoginPage from '../Login/Login';
 import Signup from '../Signup/Signup';
 import PrivacyPolicy from '../../pages/PrivacyPolicy/PrivacyPolicy';
 import './App.css';
+import CompleteProfile from '../CompleteProfile/CompleteProfile';
 
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/completeprofile" element={<CompleteProfile />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
     </Routes>
   );
