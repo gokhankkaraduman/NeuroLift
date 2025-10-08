@@ -1,0 +1,122 @@
+/* CompleteProfile.module.css */
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - 4rem);
+  overflow: hidden;
+}
+
+.leftPane {
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rightPane {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-lg);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* === Progress Bar === */
+.progressBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  position: sticky;
+  top: 0;
+  background: var(--color-bg-default);
+  padding: var(--spacing-lg) 0;
+  margin-bottom: var(--spacing-md);
+  z-index: 10;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  z-index: 2;
+  transition: all var(--transition-duration) ease-in-out;
+}
+
+.circle.active {
+  border-color: var(--color-brand-primary);
+  background: var(--color-brand-primary);
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(195, 65, 168, 0.4);
+}
+
+.line {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--color-border-subtle);
+  z-index: 1;
+  transition: all var(--transition-duration) ease-in-out;
+}
+
+.lineActive {
+  background: var(--color-brand-primary);
+  box-shadow: 0 0 6px rgba(195, 65, 168, 0.3);
+}
+
+.stepLabel {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  transition: all var(--transition-duration) ease-in-out;
+  white-space: nowrap;
+}
+
+.labelActive {
+  color: var(--color-brand-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* === Form Section === */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  overflow-y: auto;
+  flex: 1;
+  padding-bottom: var(--spacing-lg);
+}
