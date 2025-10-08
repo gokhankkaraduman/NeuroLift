@@ -25,9 +25,8 @@
     --color-brand-secondary: #fa5560;     /* Kırmızı/Pembe */
     --color-text-link: var(--color-brand-primary);
     
-    /* Odaklanma (Focus Ring) için Eklendi */
-    --color-focus-ring: #3b82f6;          /* Mavi gibi belirgin bir renk */
-    --outline-ring: 0 0 0 4px var(--color-focus-ring);
+    /* Odaklanma (Focus Ring) için Eklendi */      
+    --outline-ring: 0 0 0 4px var(--color-brand-primary);
     
     /* ------------------------------
        C. TİPOGRAFİ, SPACING, UTILITIES (Ortak)
