@@ -31,6 +31,9 @@ function SignupForm() {
 
   return (
     <section className={styles.signupContainer}>
+      <div className={styles.imgSection}>
+        <img src={signupPageImg} alt="signup-page" className={styles.signupImage} />
+      </div>
       <div className={styles.signupFormContainer}>
         <div className={styles.logoContainer}>
           <img src={logo} alt="logo" className={styles.logo} />
@@ -59,6 +62,7 @@ function SignupForm() {
                 (token) => {
                   // Success handler
                   console.log("reCAPTCHA v3 token for signup:", token);
+                  console.log("values:", values);
                   setAnimate(true);
                   setTimeout(() => setAnimate(false), 1200);
                   actions.resetForm();
@@ -80,12 +84,20 @@ function SignupForm() {
                     type="text"
                     className={styles.nameField}
                     placeholder="First Name"
+                    style={{ 
+                      color: 'var(--color-text-default)',
+                      backgroundColor: 'var(--color-bg-surface)'
+                    }}
                   />
                   <Field
                     name="lastName"
                     type="text"
                     className={styles.nameField}
                     placeholder="Last Name"
+                    style={{ 
+                      color: 'var(--color-text-default)',
+                      backgroundColor: 'var(--color-bg-surface)'
+                    }}
                   />
                 </div>
                 <ErrorMessage name="firstName">
@@ -100,6 +112,10 @@ function SignupForm() {
                   type="email"
                   className={styles.inputField}
                   placeholder="name@example.com"
+                  style={{ 
+                    color: 'var(--color-text-default)',
+                    backgroundColor: 'var(--color-bg-surface)'
+                  }}
                 />
                 <ErrorMessage name="email">
                   {(msg) => <div className={styles.errorBox}>{msg}</div>}
@@ -110,6 +126,10 @@ function SignupForm() {
                   type="password"
                   className={styles.inputField}
                   placeholder="••••••••"
+                  style={{ 
+                    color: 'var(--color-text-default)',
+                    backgroundColor: 'var(--color-bg-surface)'
+                  }}
                 />
                 <ErrorMessage name="password">
                   {(msg) => <div className={styles.errorBox}>{msg}</div>}
@@ -120,6 +140,10 @@ function SignupForm() {
                   type="password"
                   className={styles.inputField}
                   placeholder="Confirm Password"
+                  style={{ 
+                    color: 'var(--color-text-default)',
+                    backgroundColor: 'var(--color-bg-surface)'
+                  }}
                 />
                 <ErrorMessage name="confirmPassword">
                   {(msg) => <div className={styles.errorBox}>{msg}</div>}
@@ -200,10 +224,6 @@ function SignupForm() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className={styles.imgSection}>
-        <img src={signupPageImg} alt="signup-page" className={styles.signupImage} />
       </div>
     </section>
   );
