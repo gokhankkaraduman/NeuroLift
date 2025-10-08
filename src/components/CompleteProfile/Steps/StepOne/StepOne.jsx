@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Select from 'react-select';
+import { useState } from 'react';
 import { 
   FaFrown, 
   FaMeh, 
@@ -9,7 +10,9 @@ import {
   FaAngry, 
   FaTired, 
   FaGrimace, 
-  FaLaughBeam 
+  FaLaughBeam,
+  FaArrowRight,
+  FaArrowLeft
 } from 'react-icons/fa';
 import LocationAutocomplete from './LocationAutocomplete';
 import validationSchema from '../../../../validation/StepOneSchema';
@@ -36,10 +39,12 @@ const moodOptions = [
   { value: 'excited', label: 'Excited', icon: <FaLaughBeam color="#ffb300" /> },
   { value: 'surprised', label: 'Surprised', icon: <FaSurprise color="#ff7043" /> },
   { value: 'angry', label: 'Angry', icon: <FaAngry color="#ef5350" /> },
-  { value: 'overjoyed', label: 'Overjoyed', icon: <FaGrimace color="#26a69a" /> }
+  { value: 'overjoyed', label: 'Overjoyed', icon: <FaGrimace color="#d9ff00ff" /> }
 ];
 
 function MoodSelect({ field, form }) {
+  const BRAND_PRIMARY = '#7c3aed'; // var(--color-brand-primary)
+
   return (
     <Select
       options={moodOptions}
@@ -55,62 +60,35 @@ function MoodSelect({ field, form }) {
         </div>
       )}
       styles={{
-        container: (base) => ({
-          ...base,
-          width: '100%',
-        }),
+        container: (base) => ({ ...base, width: '100%' }),
         control: (base, state) => ({
           ...base,
           width: '100%',
           backgroundColor: 'var(--color-bg-surface)',
-          borderColor: state.isFocused 
-            ? 'var(--color-brand-primary)' 
-            : 'var(--color-border-subtle)',
+          borderColor: state.isFocused ? BRAND_PRIMARY : 'var(--color-border-subtle)',
           borderWidth: state.isFocused ? '2px' : '1px',
-          boxShadow: 'none',
-          color: 'var(--color-text-default)',
+          boxShadow: state.isFocused ? `0 0 0 2px ${BRAND_PRIMARY}33` : 'none',
+          cursor: 'pointer',
+          borderRadius: 'var(--border-radius-base)',
           minHeight: '44px',
           height: '44px',
-          borderRadius: 'var(--border-radius-base)',
           transition: 'all 0.2s ease-in-out',
-          cursor: 'pointer',
-          '&:hover': {
-            borderColor: 'var(--color-brand-primary)',
-            borderWidth: '1.5px',
-          },
+          '&:hover': { borderColor: BRAND_PRIMARY },
         }),
-        valueContainer: (base) => ({
-          ...base,
-          padding: '0 var(--spacing-lg)',
-          height: '44px',
-        }),
-        input: (base) => ({
-          ...base,
-          margin: 0,
-          padding: 0,
-          color: 'var(--color-text-default)',
-        }),
-        singleValue: (base) => ({
-          ...base,
-          color: 'var(--color-text-default)',
-          display: 'flex',
-          alignItems: 'center',
-          margin: 0,
-        }),
-        indicatorSeparator: () => ({
-          display: 'none',
-        }),
-        indicatorsContainer: (base) => ({
-          ...base,
-          height: '44px',
-        }),
+        valueContainer: (base) => ({ ...base, padding: '0 var(--spacing-lg)', height: '44px' }),
+        input: (base) => ({ ...base, margin: 0, padding: 0, color: 'var(--color-text-default)' }),
+        singleValue: (base, state) => {
+          const selectedOption = moodOptions.find(opt => opt.value === state.getValue()[0]?.value);
+          const color = selectedOption?.icon.props.color || 'var(--color-text-default)';
+          return { ...base, color: color, display: 'flex', alignItems: 'center', gap: '10px', margin: 0 };
+        },
+        indicatorSeparator: () => ({ display: 'none' }),
+        indicatorsContainer: (base) => ({ ...base, height: '44px' }),
         dropdownIndicator: (base) => ({
           ...base,
-          color: 'var(--color-text-secondary)',
+          color: BRAND_PRIMARY,
           padding: '8px',
-          '&:hover': {
-            color: 'var(--color-text-default)',
-          },
+          '&:hover': { color: BRAND_PRIMARY },
         }),
         menu: (base) => ({
           ...base,
@@ -127,52 +105,39 @@ function MoodSelect({ field, form }) {
           padding: '8px',
           maxHeight: '250px',
           overflowY: 'auto',
-          '::-webkit-scrollbar': {
-            width: '8px',
-          },
-          '::-webkit-scrollbar-track': {
-            background: 'rgba(0, 0, 0, 0.1)',
+          '::-webkit-scrollbar': { width: '8px' },
+          '::-webkit-scrollbar-track': { background: 'rgba(0,0,0,0.1)', borderRadius: '4px' },
+          '::-webkit-scrollbar-thumb': { background: 'var(--color-border-default)', borderRadius: '4px' },
+          '::-webkit-scrollbar-thumb:hover': { background: 'var(--color-text-secondary)' },
+        }),
+        option: (base, state) => {
+          const color = state.data.icon.props.color;
+          return {
+            ...base,
+            backgroundColor: state.isSelected ? color : state.isFocused ? `${color}33` : 'var(--color-bg-elevated)',
+            color: state.isSelected || state.isFocused ? '#fff' : 'var(--color-text-default)',
+            cursor: 'pointer',
+            padding: '12px',
             borderRadius: '4px',
-          },
-          '::-webkit-scrollbar-thumb': {
-            background: 'var(--color-border-default)',
-            borderRadius: '4px',
-          },
-          '::-webkit-scrollbar-thumb:hover': {
-            background: 'var(--color-text-secondary)',
-          },
-        }),
-        option: (base, state) => ({
-          ...base,
-          backgroundColor: state.isSelected
-            ? 'var(--color-brand-primary)'
-            : state.isFocused
-            ? 'var(--color-bg-hover)'
-            : 'var(--color-bg-elevated)',
-          color: 'var(--color-text-default)',
-          cursor: 'pointer',
-          padding: '12px',
-          borderRadius: '4px',
-          transition: 'background-color 0.15s ease',
-          '&:active': {
-            backgroundColor: 'var(--color-brand-primary)',
-          },
-        }),
-        placeholder: (base) => ({
-          ...base,
-          color: 'var(--color-text-secondary)',
-          margin: 0,
-        }),
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            transition: 'background-color 0.15s ease',
+          };
+        },
+        placeholder: (base) => ({ ...base, color: 'var(--color-text-secondary)', margin: 0 }),
       }}
     />
   );
 }
 
 export default function StepOne({ nextStep, updateFormData, formData }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   return (
     <div className={styles.stepContainer}>
       <Formik
-        // ✅ initialValues'a mevcut formData'yı ekle
+
         initialValues={{
           age: formData.age || '',
           gender: formData.gender || '',
@@ -182,12 +147,15 @@ export default function StepOne({ nextStep, updateFormData, formData }) {
           location: formData.location || ''
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-          // ✅ Önce formData'yı güncelle
+        onSubmit={async (values) => {
+          setIsSubmitting(true);
           updateFormData(values);
-          // ✅ Sonra next step'e geç
-          nextStep();
-          // ✅ Console log artık güncel değerleri gösterecek
+          
+          // Animasyon için kısa bir gecikme
+          setTimeout(() => {
+            nextStep();
+          }, 800);
+
           console.log('Step One Data:', values);
         }}
       >
@@ -236,7 +204,14 @@ export default function StepOne({ nextStep, updateFormData, formData }) {
             <Field name="mood" component={MoodSelect} />
             <ErrorMessage name="mood" component="div" className={styles.errorBox} />
 
-            <button type="submit" className={styles.submitButton}>Next</button>
+            <button 
+              type="submit" 
+              className={`${styles.submitButton} ${isSubmitting ? styles.submitting : ''}`}
+              disabled={isSubmitting}
+            >
+              <span>Next</span>
+              <FaArrowRight className={styles.buttonIcon} />
+            </button>
           </Form>
         )}
       </Formik>
