@@ -1,0 +1,24 @@
+.moodPanel {
+    background-color: var(--color-brand-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-base);
+    color: var(--color-text-default);
+    width: 300px;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    text-align: start;
+}
+.moodInfo{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+.moodIcon {
+    font-size: var(--font-size-xl);
+}
+.moodLabel {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-tertiary);
+}

@@ -1,0 +1,19 @@
+.summaryPanel{
+    margin-top:20px;
+    width: 1400px;
+    text-align: start;
+    display:flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+.summaryText{
+    font-weight: var(--font-weight-bold);
+    font-size:var(--font-size-lg);
+    color:var(--color-text-primary);
+}
+
+.panelsContainer {
+    display:flex;
+    justify-content: space-between;
+    gap:var(--spacing-md)
+}

@@ -1,0 +1,12 @@
+.homeLayout{
+    display:flex;
+    align-items:start;
+    padding: var(--spacing-lg);
+    gap: 120px;
+}
+.rightDecoration{
+    
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+}

@@ -17,6 +17,7 @@
 
     --color-text-default: #f9fafb;        /* Ana metin: Beyaz */
     --color-text-secondary: #9ca3af;      /* İkincil metin: Açık gri */
+    --color-text-tertiary: #c9d1d9;       /* Üçüncül metin: Orta gri */
 
     /* ------------------------------
        B. MARKA VE ODAK (FOCUS) RENKLERİ
@@ -24,6 +25,7 @@
     --color-brand-primary: #7c3aed;       /* Mor */
     --color-brand-secondary: #fa5560;     /* Kırmızı/Pembe */
     --color-text-link: var(--color-brand-primary);
+
     
     /* Odaklanma (Focus Ring) için Eklendi */      
     --outline-ring: 0 0 0 4px var(--color-brand-primary);
@@ -52,6 +54,12 @@
     --border-radius-base: 8px;
     --transition-duration: 0.2s;
     --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+        /* ------------------------------
+       C. CARD STYLES
+       ------------------------------ */
+    --card-bg: #2A313C;
+    --card-subtitle-color: #D4C9E7;
+    --card-date-color: #C3B5FF;
 }
 
 /* =========================================================================

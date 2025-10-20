@@ -1,0 +1,76 @@
+{
+  "journal_name": "AI Analizi için Optimize Edilmiş Temel Duygu Günlüğü",
+  "mood_options_for_ai": ["Mutlu", "Mutsuz", "Korkulu", "Kızgın", "Sakin", "Motive", "Memnun", "Yorgun", "Meraklı", "Bağlı"],
+  "entries": [
+    {
+      "id": 1,
+      "date": "2025-10-18T07:30:00Z",
+      "title": "Sabahın Işığı ve Minnettarlık",
+      "text_content": "Bugün uyandığımda içimde hafif ve neşeli bir his vardı. Pencereden süzülen güneş ışığı, güne başlamak için harika bir enerji verdi. Projenin son testlerini başarıyla geçtiğini öğrenmek, bu hissi katladı. Basit şeylere odaklanarak bu mutluluğu koruyorum; sıcak kahvem, sessiz sabahım ve yanımda hissettiğim iç huzur. Hayat gerçekten güzel.",
+      "mood": "Mutlu"
+    },
+    {
+      "id": 2,
+      "date": "2025-10-17T18:45:00Z",
+      "title": "Başarısız Derleme ve Hayal Kırıklığı",
+      "text_content": "Tüm hafta sonumu harcadığım o karmaşık modül, son derlemede kritik bir hata verdi. Şu an içimde derin bir hüzün ve hayal kırıklığı hissediyorum. Tüm çabanın boşa gitmesi çok üzücü. Geri çekilip ağlamak istesem de, bunun sadece geçici bir duygu olduğunu hatırlatıyorum kendime. Bugünün karanlık bir gün olduğunu kabul etmek beni mutsuz ediyor.",
+      "mood": "Mutsuz"
+    },
+    {
+      "id": 3,
+      "date": "2025-10-16T15:10:00Z",
+      "title": "Sunum Kaygısı ve Çapalama Tekniği",
+      "text_content": "Öğleden sonraki büyük müşteri sunumu yaklaştıkça kalbim göğüs kafesimi zorluyor, ellerim terliyor. Zihnim sürekli en kötü senaryoları tekrarlıyor. Yoğun bir korku ve kaygı hissediyorum. Hemen masamdaki kalemtıraşı elime alıp dokusuna odaklandım; bu anlık çapalama, zihnimi gelecekteki felaket senaryolarından şimdiki ana çekmeme yardımcı oldu.",
+      "mood": "Korkulu"
+    },
+    {
+      "id": 4,
+      "date": "2025-10-15T11:40:00Z",
+      "title": "Haksız Eleştiriye Tepki",
+      "text_content": "Sabah toplantısında yazdığım koda haksız ve agresif bir eleştiri geldi. İçimde hızla yükselen, kontrol etmesi zor bir öfke hissettim. Sesimi yükseltmek yerine, derin nefesler alarak tepkimi yavaşlattım. Bu kızgınlık duygusunun, sadece kendimi koruma isteğimden kaynaklandığını fark ettim. Eleştiriyi şahsi almamak için büyük çaba sarf ediyorum.",
+      "mood": "Kızgın"
+    },
+    {
+      "id": 5,
+      "date": "2025-10-14T19:00:00Z",
+      "title": "Akşam Meditasyonu ve Dinginlik",
+      "text_content": "Yoğun bir günün ardından yaptığım 20 dakikalık nefes meditasyonu inanılmaz bir huzur getirdi. Zihnim hala hafifçe meşgul olsa da, düşüncelerin bulutlar gibi geçip gitmesine izin verdim. Şu an hissettiğim şey derin bir sakinlik ve merkezlenme. Yatağa uzanıp nefesimi takip etmek, vücudumdaki tüm gerilimi serbest bırakıyor.",
+      "mood": "Sakin"
+    },
+    {
+      "id": 6,
+      "date": "2025-10-13T10:20:00Z",
+      "title": "Yeni Proje Heyecanı ve Akış Durumu",
+      "text_content": "Sabah yeni bir framework öğrenmeye başladım ve hemen bir 'akış' durumuna girdim. İlerleme hızı inanılmazdı; saatlerin nasıl geçtiğini anlamadım bile. Bu enerji ve odaklanma hali, beni çok motive ediyor. Başarma isteği ve öğrenmenin verdiği heyecan, tüm vücuduma yayılmış durumda. Bu işi bitirebileceğime dair büyük bir inancım var.",
+      "mood": "Motive"
+    },
+    {
+      "id": 7,
+      "date": "2025-10-12T13:15:00Z",
+      "title": "Yeterli Olma Hissi",
+      "text_content": "Bugün öğle yemeğimi yavaşça yerken etrafımdaki anın seslerini fark ettim. Ne daha fazlasını ne de daha azını istemiyorum. Yaptığım iş, geldiğim nokta ve basit bir öğünle gelen bu rahatlık hissi yeterli. Büyük bir coşku değil, ama derin bir memnuniyet var. Her şeyin olması gerektiği gibi olduğunu kabul ediyorum.",
+      "mood": "Memnun"
+    },
+    {
+      "id": 8,
+      "date": "2025-10-11T22:30:00Z",
+      "title": "Günün Sonu ve Tükenmişlik",
+      "text_content": "Zihinsel ve fiziksel olarak tamamen tükenmiş hissediyorum. Tüm gün ekran karşısında olmak enerjimi sıfırladı. Hatta bir günlük kaydı yazmak bile zor geliyor. Bu yoğun yorgunluk hissi, bedenimin bana 'Dur!' dediği anlamına geliyor. Şu an hissettiğim tek şey, sadece dinlenme isteği ve bitkinlik.",
+      "mood": "Yorgun"
+    },
+    {
+      "id": 9,
+      "date": "2025-10-10T16:50:00Z",
+      "title": "Düşünceleri Gözlemlemek",
+      "text_content": "Meditasyon sırasında zihnime gelen düşünceleri yakalamaya çalıştım. Onları yargılamak yerine, sadece 'düşünce' veya 'planlama' diye etiketledim. Bu gözlem süreci çok ilginçti; zihnimin nasıl çalıştığını merakla inceliyordum. Bu merak, benim duygusal tepkilerimle aramda bir mesafe oluşturmama yardımcı oluyor.",
+      "mood": "Meraklı"
+    },
+    {
+      "id": 10,
+      "date": "2025-10-09T20:15:00Z",
+      "title": "Şefkat ve Bağlanma Pratiği",
+      "text_content": "Bugün bir arkadaşımın zor bir dönemden geçtiğini öğrendim. Akşam pratiğimde, 'Metta' meditasyonu yaparak ona şefkat ve iyi dileklerimi gönderdim. Başkalarının acısını hissedebilmek ve onlara destek olmak, beni insanlığımla güçlü bir şekilde bağlı hissettirdi. Bu derin empati ve bağlanma duygusu, içimi ısıtıyor.",
+      "mood": "Bağlı"
+    }
+  ]
+}

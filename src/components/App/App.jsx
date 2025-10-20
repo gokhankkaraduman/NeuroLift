@@ -5,15 +5,21 @@ import Signup from '../Signup/Signup';
 import PrivacyPolicy from '../../pages/PrivacyPolicy/PrivacyPolicy';
 import './App.css';
 import CompleteProfile from '../CompleteProfile/CompleteProfile';
+import HomePage from '../../pages/HomePage/HomePage';
+
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/completeprofile" element={<CompleteProfile />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-    </Routes>
+  return ( 
+    <>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/completeprofile" element={<CompleteProfile />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/home" element={<HomePage />} />
+      </Routes>
+    </>
+
   );
 }
 
