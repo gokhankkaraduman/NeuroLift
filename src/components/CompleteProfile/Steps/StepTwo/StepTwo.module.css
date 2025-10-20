@@ -151,12 +151,23 @@ input::-webkit-inner-spin-button {
   box-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
+/* Error message stilleri */
+.errorMessage {
+  color: #ff6b6b;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  margin-top: 4px;
+  padding-left: 4px;
+  display: block;
+  min-height: 16px;
+}
+
 /* Button Group */
 .buttonGroup {
   display: flex;
   gap: var(--spacing-xxl);
   justify-content: space-between;
-  width: 100%;
+  width: 100%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
   margin-top: var(--spacing-lg);
   flex-shrink: 0;
   align-items: center;

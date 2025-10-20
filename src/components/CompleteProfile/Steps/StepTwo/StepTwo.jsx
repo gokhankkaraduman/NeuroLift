@@ -119,14 +119,6 @@ function SocialSelect({ field, form }) {
           flexWrap: 'wrap',
           gap: '4px',
         }),
-        multiValueLabel: base => ({
-          ...base,
-          fontSize: 'var(--font-size-sm)',
-          maxWidth: 'none',
-          overflow: 'visible',
-          textOverflow: 'unset',
-          whiteSpace: 'nowrap',
-        }),
       }}
     />
   );
@@ -159,7 +151,8 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
           sleepQuality: formData.sleepQuality || '',
           meditation: formData.meditation || ''
         }}
-        // validationSchema={validationSchema}
+        
+        validationSchema={validationSchema}
         onSubmit={async (values) => {
           setIsSubmitting(true);
           console.log('Step Two Data:', values);
@@ -168,10 +161,10 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
           // Animasyon için kısa bir gecikme
           setTimeout(() => {
             nextStep();
-          }, 800);
+          }, 1200);
         }}
       >
-        {({ values }) => (
+        {() => (
           <Form className={styles.formWrapper}>
 
             {/* Row 1: Exercise + Exercise Hours */}
@@ -183,11 +176,13 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
                   <option value="yes">Yes, I exercise regularly</option>
                   <option value="no">No, I don't exercise</option>
                 </Field>
+                <ErrorMessage name="doesSports" component="div" className={styles.errorMessage} />
               </div>
 
               <div className={styles.fieldGroup}>
                 <label className={styles.label} htmlFor="weeklyExerciseHours">How many hours per week do you exercise?</label>
                 <Field type="number" name="weeklyExerciseHours" id="weeklyExerciseHours" className={styles.inputField} placeholder="Enter hours (e.g., 5 hours per week)" />
+                <ErrorMessage name="weeklyExerciseHours" component="div" className={styles.errorMessage} />
               </div>
             </div>
 
@@ -200,11 +195,13 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
                   <option value="yes">Yes, I use social media</option>
                   <option value="no">No, I don't use social media</option>
                 </Field>
+                <ErrorMessage name="socialMediaUse" component="div" className={styles.errorMessage} />
               </div>
 
               <div className={styles.fieldGroup}>
                 <label className={styles.label} htmlFor="socialMediaHours">How many hours per week on social media?</label>
                 <Field type="number" name="socialMediaHours" id="socialMediaHours" className={styles.inputField} placeholder="Enter hours (e.g., 10 hours per week)" />
+                <ErrorMessage name="socialMediaHours" component="div" className={styles.errorMessage} />
               </div>
             </div>
 
@@ -213,6 +210,7 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
               <div className={styles.fieldGroup}>
                 <label className={styles.label} htmlFor="socialPlatforms">Which social media platforms do you use?</label>
                 <Field name="socialPlatforms" component={SocialSelect} />
+                <ErrorMessage name="socialPlatforms" component="div" className={styles.errorMessage} />
               </div>
 
               <div className={styles.fieldGroup}>
@@ -221,6 +219,7 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
                   <option value="" disabled>Select your morning routine intensity</option>
                   {routineOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
                 </Field>
+                <ErrorMessage name="morningRoutine" component="div" className={styles.errorMessage} />
               </div>
             </div>
 
@@ -232,11 +231,13 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
                   <option value="" disabled>Select your evening routine intensity</option>
                   {routineOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
                 </Field>
+                <ErrorMessage name="eveningRoutine" component="div" className={styles.errorMessage} />
               </div>
 
               <div className={styles.fieldGroup}>
                 <label className={styles.label} htmlFor="coffeeIntake">How many cups of coffee do you drink daily?</label>
                 <Field type="number" name="coffeeIntake" id="coffeeIntake" className={styles.inputField} placeholder="Enter number of cups (e.g., 2 cups per day)" />
+                <ErrorMessage name="coffeeIntake" component="div" className={styles.errorMessage} />
               </div>
             </div>
 
@@ -251,6 +252,7 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
                   <option value="good">Good - I sleep well most nights</option>
                   <option value="excellent">Excellent - I always sleep great</option>
                 </Field>
+                <ErrorMessage name="sleepQuality" component="div" className={styles.errorMessage} />
               </div>
 
               <div className={styles.fieldGroup}>
@@ -260,6 +262,7 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
                   <option value="yes">Yes, I meditate regularly</option>
                   <option value="no">No, I don't meditate</option>
                 </Field>
+                <ErrorMessage name="meditation" component="div" className={styles.errorMessage} />
               </div>
             </div>
 
@@ -268,6 +271,7 @@ export default function StepTwo({ nextStep, prevStep, formData, updateFormData }
               <div className={styles.fieldGroup}>
                 <label className={styles.label} htmlFor="hobbies">What are your hobbies and interests?</label>
                 <Field type="text" name="hobbies" id="hobbies" className={styles.inputField} placeholder="Describe your hobbies (e.g., reading, painting, gaming, sports)" />
+                <ErrorMessage name="hobbies" component="div" className={styles.errorMessage} />
               </div>
             </div>
 

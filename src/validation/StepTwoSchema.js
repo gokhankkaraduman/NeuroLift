@@ -37,12 +37,12 @@ const StepTwoSchema = Yup.object().shape({
   // Sabah rutini
   morningRoutine: Yup.string()
     .required('Please select your morning routine')
-    .oneOf(['early_bird', 'normal', 'late_riser'], 'Please select a valid morning routine'),
+    .oneOf(['none', 'light', 'moderate', 'heavy'], 'Please select a valid morning routine'),
 
   // Akşam rutini
   eveningRoutine: Yup.string()
     .required('Please select your evening routine')
-    .oneOf(['early_sleeper', 'normal', 'night_owl'], 'Please select a valid evening routine'),
+    .oneOf(['none', 'light', 'moderate', 'heavy'], 'Please select a valid evening routine'),
 
   // Kahve tüketimi
   coffeeIntake: Yup.number()
@@ -54,12 +54,12 @@ const StepTwoSchema = Yup.object().shape({
   // Uyku kalitesi
   sleepQuality: Yup.string()
     .required('Please select your sleep quality')
-    .oneOf(['excellent', 'good', 'fair', 'poor'], 'Please select a valid sleep quality'),
+    .oneOf(['poor', 'average', 'good', 'excellent'], 'Please select a valid sleep quality'),
 
   // Meditasyon
   meditation: Yup.string()
     .required('Please select your meditation practice')
-    .oneOf(['daily', 'weekly', 'monthly', 'rarely', 'never'], 'Please select a valid meditation practice')
+    .oneOf(['yes', 'no'], 'Please select a valid meditation practice')
 });
 
 export default StepTwoSchema;
