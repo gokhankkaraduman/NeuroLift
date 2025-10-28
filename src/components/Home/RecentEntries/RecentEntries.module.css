@@ -1,0 +1,75 @@
+.recentEntries {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;
+    text-align: start;
+}
+
+.entryCard {
+    display:flex;
+    justify-content: space-between;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.entryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-xl);
+
+}
+.entryContentWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    text-align: start;
+
+}
+.entryDate {
+  display: inline-block;
+  white-space: pre-line; /* satır atlamalarını korur */
+  text-align: center;
+  font-size: var(--font-size-md);
+  line-height: 1.4;
+  color:var(--color-brand-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Her boşluğu satır sonuna çevir */
+.entryDate::after {
+  content: "";
+}
+
+.entryDate {
+  /* Her boşluğu satır atlamasına dönüştür */
+  white-space: pre-wrap;
+}
+
+.entryDate {
+  display: block;
+}
+
+
+.entryContent {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  max-width: 1200px;
+  line-height: 1.4;
+  color:var(--color-text-tertiary);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.moodIconWrapper {
+    display: flex;
+    align-items: center;
+}

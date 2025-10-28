@@ -1,0 +1,28 @@
+.sidebarButtons{
+    display:flex;
+    flex-direction:column;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+.sidebarButtons > * {
+    width: 100%;
+}
+.btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    color:var(--color-text-primary);
+    cursor:pointer;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    width: 100%;
+    border:none;
+    font-size:var(--font-size-lg);
+}
+.btn:hover {
+    color: var(--color-primary); 
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 4px rgba(19, 1, 16, 0.925); 
+}

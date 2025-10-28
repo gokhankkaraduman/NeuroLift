@@ -1,0 +1,18 @@
+.goalEditor {
+    width: 100%;
+    max-width: none; 
+    margin-bottom: var(--spacing-xl); 
+    box-sizing: border-box; 
+    text-align: start;
+    
+
+    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.7),
+                0 6px 10px -3px rgba(0, 0, 0, 0.5);
+    
+    border-radius: var(--border-radius-base);
+    
+
+    background-color: #1E1B1A; 
+    padding: var(--spacing-lg);
+    border: 2px solid var(--color-border-default);
+}

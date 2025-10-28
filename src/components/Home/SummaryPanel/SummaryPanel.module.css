@@ -1,0 +1,23 @@
+.summaryPanel {
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    box-sizing: border-box;
+}
+
+.panelsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    align-items: stretch;
+}
+
+.summaryText{
+    font-weight: var(--font-weight-bold);
+    font-size:var(--font-size-lg);
+    color:var(--color-text-primary);
+}

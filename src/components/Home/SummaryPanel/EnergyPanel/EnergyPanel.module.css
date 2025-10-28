@@ -1,0 +1,27 @@
+.energyPanel {
+    background-color: transparent;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-base);
+    color: var(--color-text-default);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    text-align: start;
+    background-image: url("https://unsplash.com/photos/a-woman-sitting-on-the-floor-in-front-of-a-rock-0fvOfPOfV1g");
+}
+.energyInfo{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+.energyIcon {
+    font-size: var(--font-size-xl);
+}
+.energyLabel {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-tertiary);
+}
