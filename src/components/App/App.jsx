@@ -4,7 +4,7 @@ import LoginPage from '../Login/Login';
 import Signup from '../Signup/Signup';
 import PrivacyPolicy from '../../pages/PrivacyPolicy/PrivacyPolicy';
 import './App.css';
-import CompleteProfile from '../CompleteProfile/CompleteProfile';
+import CompleteProfile from '../Signup/CompleteProfile/CompleteProfile';
 import HomePage from '../../pages/HomePage/HomePage';
 
 
