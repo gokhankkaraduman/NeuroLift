@@ -1,0 +1,26 @@
+{
+    "morning": {
+        "title": "Morning Meditation",
+        "duration": "10 mins",
+        "imageUrl": "https://res.cloudinary.com/dnlj4mzx6/image/upload/v1761667230/morning_m7ujg3.jpg",
+        "musicUrl": "https://res.cloudinary.com/dnlj4mzx6/video/upload/v1761667250/morning_qxw1cw.mp3"
+    },
+    "midday": {
+        "title": "Midday Meditation",
+        "duration": "10 mins",
+        "imageUrl": "https://res.cloudinary.com/dnlj4mzx6/image/upload/v1761667230/midday_aansb3.jpg",
+        "musicUrl": "https://res.cloudinary.com/dnlj4mzx6/video/upload/v1761667242/midday_nehy77.mp3"
+    },
+    "evening": {
+        "title": "Evening Meditation",
+        "duration": "10 mins",
+        "imageUrl": "https://res.cloudinary.com/dnlj4mzx6/image/upload/v1761667239/evening_gn5db2.jpg",
+        "musicUrl": "https://res.cloudinary.com/dnlj4mzx6/video/upload/v1761667245/evening_nctzqa.mp3"
+    },
+    "night": {
+        "title": "Night Meditation",
+        "duration": "10 mins",
+        "imageUrl": "https://res.cloudinary.com/dnlj4mzx6/image/upload/v1761667235/woman-7346675_me9ul2.jpg",
+        "musicUrl": "https://res.cloudinary.com/dnlj4mzx6/video/upload/v1761667244/night_bowbro.mp3"
+    }
+}
