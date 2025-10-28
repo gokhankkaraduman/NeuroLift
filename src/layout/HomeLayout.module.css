@@ -1,12 +1,38 @@
-.homeLayout{
-    display:flex;
-    align-items:start;
-    padding: var(--spacing-lg);
-    gap: 120px;
-}
-.rightDecoration{
-    
-    display:flex;
+.homeLayout {
+    display: flex;
     flex-direction: column;
-    align-items: start;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+.welcomeTextContainer {
+    width: 100%;
+}
+
+.homeLayoutContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap; /* ekran küçükse alt satıra kayabilir */
+}
+
+.rightDecoration {
+    flex: 2; /* sağ panel genişliği, orantılı */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch; /* tüm kartları genişlet */
+    min-width: 300px; /* responsive alt sınır */
+}
+
+.leftDecoration {
+    flex: 0 0 600px; /* sidebar sabit genişlik */
+    min-width: 400px; /* responsive alt sınır */
+}
+
+.twoColumnSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
 }
