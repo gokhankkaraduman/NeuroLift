@@ -1,0 +1,232 @@
+/* StepThree.module.css */
+
+/* Bileşenin ana kapsayıcısı */
+.stepContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Form sarmalayıcı */
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 300px;
+  max-width: 600px;
+  gap: var(--spacing-md);
+  align-items: center;
+  box-sizing: border-box;
+  padding: var(--spacing-md);
+  flex: 1;
+  margin: 0 auto;
+}
+
+.formWrapper .fieldRow {
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* Label + input alan grubu */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* İki sütunlu layout için row */
+.fieldRow {
+  display: flex;
+  gap: var(--spacing-lg);
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+  flex-wrap: nowrap;
+  min-height: 80px;
+}
+
+.fieldRow .fieldGroup:first-child {
+  margin-left: 0;
+}
+
+.fieldRow .fieldGroup {
+  align-items: flex-start;
+}
+
+.fieldRow .fieldGroup {
+  flex: 1;
+  max-width: 450px;
+  min-width: 350px;
+}
+
+/* Tüm label'lar */
+.label {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 4px;
+  color: var(--color-text-default);
+  text-align: left;
+  align-self: flex-start;
+}
+
+/* Input ve select alanları */
+.inputField {
+  width: 100% !important;
+  min-width: 300px;
+  height: 40px !important;
+  min-height: 40px;
+  padding: 0 var(--spacing-md);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--border-radius-base);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-default);
+  transition: all var(--transition-duration) ease-in-out;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Textarea alanları */
+.textareaField {
+  width: 100% !important;
+  min-width: 300px;
+  min-height: 80px;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--border-radius-base);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-default);
+  transition: all var(--transition-duration) ease-in-out;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  resize: vertical;
+  font-family: var(--font-family-sans);
+}
+
+.inputField option {
+  color: var(--color-text-default);
+  background-color: var(--color-bg-surface);
+}
+
+.inputField option:disabled {
+  color: var(--color-text-secondary) !important;
+  background-color: var(--color-bg-surface);
+}
+
+.inputField option:first-child {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Placeholder rengi için */
+.inputField::placeholder,
+.textareaField::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.inputField:focus,
+.textareaField:focus {
+  border: 2px solid var(--color-brand-primary);
+  outline: var(--outline-ring);
+}
+
+.inputField:hover,
+.textareaField:hover {
+  border: 1.5px solid var(--color-brand-primary);
+}
+
+/* Formik hata kutusu */
+.errorBox {
+  width: 100%;
+  background-color: #2c2037;
+  color: var(--color-brand-secondary);
+  border-left: 4px solid var(--color-brand-secondary);
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: 4px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Button Group */
+.buttonGroup {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: space-between;
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* Previous button */
+.prevButton {
+  flex: 0 0 180px;
+  height: 50px;
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-default);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-duration) ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.prevButton:hover {
+  background-color: var(--color-border-default);
+  border: 1.5px solid var(--color-brand-primary);
+}
+
+/* Complete button */
+.completeButton {
+  flex: 0 0 200px;
+  height: 50px;
+  background-color: var(--color-brand-primary);
+  color: white;
+  border: 1px solid var(--color-brand-primary);
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-duration) ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.completeButton:hover {
+  background-color: var(--color-brand-secondary);
+  border-color: var(--color-brand-secondary);
+  transform: scale(1.02);
+}
+
+.completeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Button icons */
+.buttonIcon {
+  margin: 0 var(--spacing-xs);
+  font-size: var(--font-size-sm);
+}
