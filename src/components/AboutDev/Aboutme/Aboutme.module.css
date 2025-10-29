@@ -1,0 +1,159 @@
+.aboutMeContainer {
+    display: flex;
+    gap: 60px;
+    padding: 80px 40px;
+    width: 100%;
+}
+
+.profileSection {
+    flex-shrink: 0;
+}
+
+.profileImage {
+    width: 350px;
+    height: 450px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid var(--color-border-default);
+}
+
+.textSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 20px;
+}
+
+.textSection h2 {
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: start;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.textSection p {
+    font-size: 1.25rem;
+    text-align: start;
+    line-height: 2;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.buttonSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    padding-top: 20px;
+}
+
+.githubButton,
+.linkedinButton,
+.resumeButton {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px; /* Arttırdım */
+    padding: 18px 32px;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    border-radius: 10px;
+    border: 2px solid var(--color-border-default);
+    background-color: transparent;
+    color: var(--color-text-default);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* GitHub Button */
+.githubButton {
+    border-color: var(--color-border-default);
+}
+
+.githubButton svg {
+    font-size: 24px; /* Sabit boyut */
+    flex-shrink: 0; /* Küçülmeyi engelle */
+    color: var(--color-border-default);
+    transition: all 0.3s ease;
+}
+
+.githubButton:hover {
+    background: linear-gradient(135deg, var(--color-border-default) 0%, var(--color-bg-default) 100%);
+    border-color: var(--color-border-default);
+    color: var(--color-text-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(36, 41, 46, 0.4);
+}
+
+.githubButton:hover svg {
+    color: var(--color-text-primary);
+    transform: rotate(360deg);
+}
+
+/* LinkedIn Button */
+.linkedinButton {
+    border-color: #0077B5;
+}
+
+.linkedinButton svg {
+    font-size: 24px; /* Sabit boyut */
+    flex-shrink: 0;
+    color: #0077B5;
+    transition: all 0.3s ease;
+}
+
+.linkedinButton:hover {
+    background: linear-gradient(135deg, #02314a 0%, #0b7ba4 100%);
+    border-color: #0077B5;
+    color: var(--color-text-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 119, 181, 0.4);
+}
+
+.linkedinButton:hover svg {
+    color: var(--color-text-primary);
+    transform: scale(1.2);
+}
+
+/* Resume/Download Button */
+.resumeButton {
+    border-color: var(--color-brand-primary);
+}
+
+.resumeButton svg {
+    font-size: 24px; /* Sabit boyut */
+    flex-shrink: 0;
+    color: var(--color-brand-primary);
+    transition: all 0.3s ease;
+}
+
+.resumeButton:hover {
+    background: var(--color-brand-secondary);
+    border-color: var(--color-brand-primary);
+    color: var(--color-text-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(195, 65, 168, 0.5);
+}
+
+.resumeButton:hover svg {
+    color: var(--color-text-primary);
+    animation: downloadBounce 0.6s ease infinite;
+}
+
+@keyframes downloadBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(4px);
+    }
+}
