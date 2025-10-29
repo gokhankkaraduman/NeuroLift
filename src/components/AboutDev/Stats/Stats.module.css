@@ -1,0 +1,127 @@
+/*
+ * Stats.module.css
+ * Cyberpunk/Neon temasına uygun, tek istatistik gösterimi.
+ */
+
+/* Genel Konteyner: Tek bir istatistik kartı gibi davranacak */
+.statsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Boyutlandırma */
+    width: fit-content;
+    margin: 40px auto; /* Ortalamak için */
+    padding: 30px 60px;
+    
+    /* Temadaki Sınır ve Arka Plan */
+    border: 2px solid rgba(223, 8, 187, 0.5); 
+    border-radius: 12px;
+    background: rgba(26, 26, 42, 0.7); 
+
+    /* Parlak Gölgeler */
+    box-shadow: 0 0 50px rgba(223, 8, 187, 0.3);
+    
+    /* Etkileşim ve Animasyon */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hafif Holografik Arka Plan Efekti */
+.statsContainer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(223, 8, 187, 0.1) 0%, transparent 70%);
+    transition: transform 0.8s ease;
+    z-index: 0;
+}
+
+.statsContainer:hover {
+    border-color: rgba(223, 8, 187, 0.8);
+    box-shadow: 0 0 70px rgba(223, 8, 187, 0.6), inset 0 0 20px rgba(223, 8, 187, 0.2);
+    transform: translateY(-5px);
+}
+
+.statsContainer:hover::before {
+    transform: scale(1.1); /* Holografik alanın büyümesi */
+}
+
+/* İstatistik İçeriği */
+.statItem {
+    position: relative;
+    z-index: 2; /* Sayı ve yazının önde olmasını sağlar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Büyük Sayı: totalLines */
+.statNumber {
+    font-size: clamp(3.5rem, 8vw, 7rem); /* Çok büyük sayı */
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+    
+    /* Neon/Parlak Sayı Efekti */
+    background: linear-gradient(45deg, #fff 10%, rgba(255, 128, 255, 1) 50%, rgba(223, 8, 187, 1) 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 8px rgba(223, 8, 187, 0.8), 
+        0 0 20px rgba(223, 8, 187, 0.6); 
+    
+    /* Hafif titreşim animasyonu */
+    animation: pulseGlow 3s infinite alternate ease-in-out;
+}
+
+/* Açıklama Yazısı: Total Lines of Code */
+.statLabel {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.9;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+/* Başlığın Altındaki Dekoratif Çizgi */
+.statLabel::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 250px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(223, 8, 187, 0.9), transparent);
+    border-radius: 1px;
+    box-shadow: 0 0 15px rgba(223, 8, 187, 0.8);
+}
+
+/* Sayı Parlama Animasyonu */
+@keyframes pulseGlow {
+    0% {
+        opacity: 0.9;
+        text-shadow: 
+            0 0 5px rgba(223, 8, 187, 0.6), 
+            0 0 10px rgba(223, 8, 187, 0.4);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 
+            0 0 10px rgba(223, 8, 187, 0.9), 
+            0 0 30px rgba(223, 8, 187, 0.7);
+    }
+}
